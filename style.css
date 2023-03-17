@@ -8,6 +8,11 @@ html {
     height: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -97,12 +102,21 @@ nav.top-bar {
     font-size: 3.5rem;
 }
 
-.home-splash > div {
+.home-splash > form {
     background-color: white;
-    width: 15%;
+    width: 10%;
     border-radius: 10px;
     padding: 10px;
     border: solid 1px black;
+}
+
+.home-splash > form > input {
+    margin: 0.5rem
+}
+
+.home-splash > form > label {
+    margin: 0.5rem;
+    color: black;
 }
 
 .home-splash p {
@@ -112,7 +126,7 @@ nav.top-bar {
     font-size: 1.3rem;
 }
 
-.home-splash div:not(.home-splash > div) {
+.home-splash div {
     background-color: rgb(226, 226, 226);
     border-radius: 5px;
     border: solid 1px black;
@@ -122,25 +136,6 @@ nav.top-bar {
 
     transition: color, background-color 150ms;
 
-}
-
-.home-splash div:not(.home-splash > div):hover {
-    background-color: rgb(238, 238, 238);
-}
-
-.home-splash button {
-    background-color: rgb(226, 226, 226);
-    border: solid 1px black;
-    border-radius: 5px;
-    min-width: 40%;
-    font-size: 1.1rem;
-    margin-right: 20px;
-
-    transition: color, background-color 150ms;
-}
-
-.home-splash button:hover {
-    background-color: white;
 }
 
 .button {
@@ -236,7 +231,7 @@ nav.top-bar {
     padding: 0;
 }
 
-.classlist > div {
+.student-button {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -247,12 +242,12 @@ nav.top-bar {
     font-size: 1.5rem;
 }
 
-.classlist > div:hover {
-    color: rgb(255, 255, 255);
+.student-button:hover {
+    color: rgb(207, 240, 255);
     cursor: pointer;
 }
 
-.classlist > div > div {
+.student-button > div {
     width: 2.5rem;
     height: 2.5rem;
     aspect-ratio: 1 / 1;
@@ -261,10 +256,261 @@ nav.top-bar {
     margin: 10px;
 }
 
-.classlist > div > p {
+.student-button > p {
     padding: 0;
     margin-inline: 20px;
 }
+
+.drop-class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    width: 4rem;
+    aspect-ratio: 1 / 1;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 10%;
+
+    transition: color, background-color 100ms;
+}
+
+.drop-class:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+.profile {
+    background-color: white;
+    width: 40%;
+    padding: 2%;
+}
+
+.profile .icon {
+    width: 30%;
+    aspect-ratio: 1 / 1;
+    background-color: red;
+    border-radius: 10%;
+}
+
+.profile .info {
+    color: black;
+    width: 50%;
+}
+
+.profile .info > * {
+    width: 100%;
+    padding: 3px;
+    margin: 2px;
+}
+
+.profile .info > textarea {
+    display: flex;
+    font-size: 1.2rem;
+    border: 1px solid rgba(128, 128, 128, 0.356);
+    border-radius: 10px;
+}
+
+.profile .bio {
+    margin: 2%;
+    width: 90%;
+    align-self: center;
+    color: black;
+}
+
+.profile .bio > * {
+    margin: 1%;
+}
+
+.profile .bio > textarea {
+    width: 100%;
+    border-radius: 5px;
+    aspect-ratio: 5 / 1;
+    font-size: 1.3rem;
+}
+
+.profile a {
+    color: black;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    transition: color, background-color 100ms;
+}
+
+.profile a:nth-of-type(1):hover {
+    background-color: green;
+    color: white;
+}
+
+.profile a:nth-of-type(2):hover {
+    background-color: red;
+    color: white;
+}
+
+.student-view {
+    background-color: white;
+    width: 40%;
+    padding: 2%;
+}
+
+.student-view .icon {
+    width: 10rem;
+    max-height: 10rem;
+    background-color: red;
+    border-radius: 10%;
+}
+
+.student-view .info {
+    color: black;
+    width: 45%;
+}
+
+.student-view .info > * {
+    width: 100%;
+    padding: 3px;
+    margin: 2px;
+}
+
+.student-view .info > textarea {
+    display: flex;
+    border: 1px solid rgba(128, 128, 128, 0.356);
+    border-radius: 10px;
+}
+
+.student-view .bio {
+    margin: 2%;
+    width: 90%;
+    align-self: center;
+    color: black;
+}
+
+.student-view .bio > * {
+    margin: 1%;
+}
+
+.student-view .bio > textarea {
+    width: 100%;
+    border-radius: 5px;
+    aspect-ratio: 7 / 1;
+    font-size: 1.1rem;
+}
+
+.student-view p {
+    align-self: center;
+    color: black;
+    margin: 0;
+    padding: 0;
+    font-size: 1.3rem;
+}
+
+.student-view a {
+    color: black;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    transition: color, background-color 100ms;
+    width: 30%;
+    align-self: center;
+    text-align: center;
+}
+
+.student-view a:hover {
+    background-color: red;
+    color: white;
+}
+
+.assignments-admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.listing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%
+}
+
+.listing > div {
+    background-color: black;
+    width: 80%;
+    font-size: 2rem;
+    padding: 10px;
+    font-style: italic;
+    margin: 10px;
+}
+
+.listing > a {
+    font-size: 1.5rem;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 7%;
+    background-color: white;
+    color: black;
+    border: 1px solid gray;
+
+    transition: color, background-color 100ms;
+}
+
+.listing > a:hover {
+    background-color: green;
+    color: white;
+}
+
+.assignment-posting {
+    background-color: white;
+    width: 40%;
+    padding: 2%;
+}
+
+.assignment-posting h1 {
+    color: black;
+}
+
+.assignment-posting form {
+    color: black;
+}
+
+.assignment-posting form > label {
+    font-size: 1.2rem;  
+    padding: 10px;
+}
+
+.assignment-posting form > textarea {
+    width: 100%;
+    aspect-ratio: 8 / 1;
+}
+
+.assignment-posting form > input {
+    width: 25%;
+}
+
+.assignment-posting a {
+    color: black;
+    border: 1px solid black;
+    border-radius: 10rem;
+    padding: 10px;
+    padding-inline: 40px;
+    margin-top: 5%;
+
+    transition: color, background-color 100ms;
+}
+
+.assignment-posting a:nth-of-type(1):hover {
+    background-color: red;
+    color: white;
+}
+
+.assignment-posting a:nth-of-type(2):hover {
+    background-color: green;
+    color: white;
+}
+
 
 /* Helper classes */
 .d-flex {
@@ -278,6 +524,18 @@ nav.top-bar {
 
 .justify-center {
     justify-content: center;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
 }
 
 .align-center {

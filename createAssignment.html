@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <h1 class="title">HELLO, ADVENTURE</h1>
+    <nav class="top-bar">
+        <ul>
+            <!-- TODO: This home button should redirect differently depending on type of account -->
+            <li><a href="/homeAdmin.html">Home</a></li>
+            <li><a href="#">Learn</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+    <!-- TODO: Make buttons submit form -->
+    <div class="d-flex justify-center">
+        <div class="assignment-posting">
+            <h1>
+                Create New Assignment
+            </h1>
+            <form class="d-flex-col justify-center">
+                <label for="title">Assignment Title</label>
+                <textarea id="title" name="title" style="resize: none"></textarea>
+                <label for="desc">Assignment Description</label>
+                <textarea id="desc" name="desc" style="resize: none" maxlength="500"></textarea>
+                <label for="date">Due Date</label>
+                <input type="date">
+            </form>
+            <div class="d-flex justify-evenly">
+                <a href="/assignmentList.html">Cancel</a>
+                <a href="/assignmentList.html">Create</a>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
