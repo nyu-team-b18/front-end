@@ -1,42 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <h1 class="title">HELLO, ADVENTURE</h1>
-    <nav class="top-bar">
-        <ul>
-            <!-- TODO: This home button should redirect differently depending on type of account -->
-            <li><a href="/homeAdmin.html">Home</a></li>
-            <li><a href="#">Learn</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-    </nav>
-    <!-- TODO: Make buttons submit form -->
-    <div class="d-flex justify-center">
-        <div class="assignment-posting">
-            <h1>
-                Update Assignment
-            </h1>
-            <form class="d-flex-col justify-center">
-                <label for="title">Assignment Title</label>
-                <textarea id="title" name="title" style="resize: none">Assignment 1</textarea>
-                <label for="desc">Assignment Description</label>
-                <textarea id="desc" name="desc" style="resize: none" maxlength="500">FitnessGram multistage test as part aerobic a capacity student's the that progressively sound lap beep by signaled each can, they times many as back forth run until continues it the reaches gets test PACER max their score. Assessment in to used combined scores, and with whether muscular strength, Healthy the the software FitnessGram determine or Zone, body composition, the Needs Improvement endurance, a student is Zone Test for the."</textarea>
-                <label for="date">Due Date</label>
-                <input type="date">
-            </form>
-            <div class="d-flex justify-evenly">
-                <a href="/assignmentList.html">Cancel</a>
-                <a href="/assignmentList.html">Update</a>
-            </div>
+<html>
+<head>
+<title>Hello, Adventure</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+<!-- Links (sit on top) -->
+<div class="w3-top">
+    <div class="w3-row w3-black w3-container w3-center w3-padding-16 w3-large">
+        <a href="#" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
+        <a href="#about" class="w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
+    </div>
+</div>
+
+<!-- Header with image -->
+<header style="min-height: 30%; margin-top: 2%;" class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">UPDATE ASSIGNMENT</span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<div class="w3-container d-flex justify-center" id="menu">
+    <div class="w3-content w3-half">
+        <form class="assignment-create d-flex-col justify-center">
+            <label for="title" class="w3-xxlarge w3-black w3-padding">Assignment Title</label>
+            <textarea id="title" name="title" style="resize: none">Assignment 1</textarea>
+            <label for="desc" class="w3-xxlarge w3-black w3-padding">Assignment Description</label>
+            <textarea id="desc" name="desc" style="resize: none" maxlength="500">FitnessGram multistage test as part aerobic a capacity student's the that progressively sound lap beep by signaled each can, they times many as back forth run until continues it the reaches gets test PACER max their score. Assessment in to used combined scores, and with whether muscular strength, Healthy the the software FitnessGram determine or Zone, body composition, the Needs Improvement endurance, a student is Zone Test for the.</textarea>
+            <label for="date" class="w3-xxlarge w3-black w3-padding">Due Date</label>
+            <input type="date">
+        </form>
+        <div class="assignment-create-buttons d-flex justify-evenly w3-margin">
+            <a class="w3-margin w3-padding-16" href="/assignmentList.html">Cancel</a>
+            <a class="w3-margin w3-padding-16" href="/assignmentList.html">Update</a>
         </div>
     </div>
-  </body>
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-16 w3-large">
+    <p>Hello, Adventure</p>
+    <p>2023</p>
+</footer>
+</body>
 </html>

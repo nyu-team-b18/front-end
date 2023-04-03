@@ -1,565 +1,260 @@
-@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
-
-* {
-    font-family: 'Play', sans-serif;
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
 }
 
-html {
-    height: 100%;
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/w3images/coffeehouse.jpg");
+  background-color: blue;
+  min-height: 60%;
 }
 
-a {
-    text-decoration: none;
-    color: white;
+.menu {
+  display: none;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    color: white;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(83, 83, 83);
-    overflow-x: hidden;
+.icon {
+  width: 18rem;
+  height: 18rem;
+  border-radius: 10%;
 }
 
-h1.title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Play', sans-serif;
-    font-size: 3.5rem;
-    color: black;
-    text-align: center;
-
-    margin:0;
-    padding: 20px;
-    background-color: white;
-}
-
-nav.top-bar {
-    border: solid 1px black;
-}
-
-.top-bar ul {
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-
-    background-color: gray;
-}
-
-.top-bar li {
-    display: inline;
-}
-
-.top-bar li a {
-    display: block;
-    text-decoration: none;
-    color: black;
-    transition: color, background-color 150ms;
-
-    font-family: 'Play', sans-serif;
-    font-size: 1.5rem;
-    padding: 10px 30px;
+form > * {
+  margin: 2%;
 }
 
 
-.top-bar li a:not(.active) {
-    background-color: rgb(175, 175, 175);
+.profile-info {
+  width: 40%;
 }
 
-
-.top-bar li a:hover:not(.active) {
-    color: white;
-    background-color: black;
+.profile-info > * {
+  width: 100%;
 }
 
-.home-splash {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    margin-block: 20px;
-    width: 100%;
-    min-height: 35%;
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 80%);
-
-    background-size: 400%;
-	animation: gradient 20s ease infinite;
+.profile-bio {
+  width: 60%;
 }
 
-.top-bar li a.active {
-    color: white;
-    background-color: rgb(36, 36, 36);
+.profile-bio > * {
+  width: 100%;
+  aspect-ratio: 4 / 1;
+  padding: 10px;
 }
 
-.home-splash > h1 {
-    text-align: center;
-    font-family: 'Play', sans-serif;
-    font-size: 3.5rem;
+.profile-buttons > * {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: antiquewhite;
+  border: solid 1px black;
+  margin-inline: 5%;
+  transition: color, background-color 150ms;
 }
 
-.home-splash > form {
-    background-color: white;
-    width: 10%;
-    border-radius: 10px;
-    padding: 10px;
-    border: solid 1px black;
+.profile-buttons a:nth-of-type(1):hover{
+  background-color: green;
+  color: white;
 }
 
-.home-splash > form > input {
-    margin: 0.5rem
+.profile-buttons a:nth-of-type(2):hover{
+  background-color: red;
+  color: white;
 }
 
-.home-splash > form > label {
-    margin: 0.5rem;
-    color: black;
+.assignments-list > * {
+  background-color: rgb(255, 255, 255);
+  border: solid 1px black;
+  border-radius: 10px;
+  width: 60%;
+  margin: 2%;
+  aspect-ratio: 8/1;
 }
 
-.home-splash p {
-    color: black;
-    padding-block: 10px;
-    margin: 0px;
-    font-size: 1.3rem;
+.assignment-button {
+  min-width: 24rem;
+  min-height: 4rem;
+  background-color: rgb(233, 233, 233);
+  border: solid 1px black;
+  border-radius: 10px;
+
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.home-splash div {
-    background-color: rgb(226, 226, 226);
-    border-radius: 5px;
-    border: solid 1px black;
-    width: 100%;
-    height: 1.5rem;
-    margin-bottom: 15px;
-
-    transition: color, background-color 150ms;
-
-}
-
-.button {
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-    margin-inline:35%;
-    margin-block: 2%;
-    font-size: 2rem;
-    padding: 10px;
-    background-color: black;
-    transition: color, background-color 150ms;
-}
-
-.button:hover {
-    color: black;
-    background-color: rgb(168, 168, 168);
-}
-
-.button > div {
-    width: 2.5rem;
-    height: 2.5rem;
-    aspect-ratio: 1 / 1;
-    border-radius: 100%;
-    background-color: white;
-    margin: 10px;
-}
-
-.button > p {
-    padding: 0;
-    margin-inline: 20px;
-}
-
-.class-information {
-    width: 50%;
-    background-color: white;
-}
-
-.assignments {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-}
-
-.assignments > div {
-    background-color: black;
-    width: 80%;
-    font-size: 2rem;
-    padding: 10px;
-    font-style: italic;
-    margin: 10px;
+.assignment-button:hover {
+  background-color: white;
 }
 
 .assignment-update {
-    text-align: center;
-    color: black;
-    padding: 10px;
-    border: solid 2px black;
-    background-color: rgb(233, 233, 233);
-    border-radius: 3%;
-    font-size: 1.5rem;
-    margin-inline: 25%;
-    margin-bottom: 4%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
 }
 
-.assignment-update:hover {
-    background-color: rgb(238, 238, 238);
-    cursor:pointer;
+.assignment-update > div {
+  background-color: rgb(255, 255, 255);
+  border: solid 1px black;
+  border-radius: 10px;
+  width: 50%;
+  margin: 2%;
+  aspect-ratio: 8/1;
 }
+
+.assignment-update > a {
+  background-color: rgb(255, 255, 255);
+  border: solid 1px black;
+  border-radius: 10px;
+  width: 15%;
+  margin: 2%;
+  aspect-ratio: 3/1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: color, background-color 150ms;
+}
+
+.assignment-update > a:hover {
+  background-color: blue;
+  color: white;
+}
+
+.assignment-create > * {
+  width: 100%;
+  padding: 5px;
+}
+
+.assignment-create > textarea {
+  aspect-ratio: 5.5 / 1;
+}
+
+.assignment-create-buttons > * {
+  width: 10rem;
+
+  border: solid 1px black;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  
+  background-color: rgb(233, 233, 233);
+
+  transition: color, background-color 150ms;
+}
+
+.assignment-create-buttons a:nth-child(1):hover {
+  color: white;
+  background-color: red;
+}
+
+.assignment-create-buttons a:nth-child(2):hover {
+  color: white;
+  background-color: blue;
+}
+
 
 .classlist {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
+  width: 60%;
 }
 
-.class-information h1 {
-    text-align: center;
-    font-size: 3rem;
-    color: black;
-    margin: 0;
-    padding: 0;
+.classlist > * {
+  min-width:  40%;
+  margin: 2%;
+  aspect-ratio: 5 / 1;
+  background-color: rgb(233, 233, 233);
+  padding: 10px;
+
+  border: solid 1px black;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
 }
 
-.class-information h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: black;
-    margin: 0;
-    padding: 0;
+.classlist > *:hover {
+  background-color: white;
 }
 
-.student-button {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: 1%;
-    background-color: black;
-    color: rgb(233, 233, 233);
-    width: 40%;
-    font-size: 1.5rem;
+.drop-button {
+  min-width: 20%;
+  border: solid 1px black;
+  border-radius: 10px;
+  background-color: rgb(233, 233, 233);
+
+  transition: color, background-color 150ms;
 }
 
-.student-button:hover {
-    color: rgb(207, 240, 255);
-    cursor: pointer;
+.drop-button:hover {
+  background-color: red;
+  color: white;
 }
 
-.student-button > div {
-    width: 2.5rem;
-    height: 2.5rem;
-    aspect-ratio: 1 / 1;
-    border-radius: 100%;
-    background-color: white;
-    margin: 10px;
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 2%;
+  transition: color, background-color 200ms;
 }
 
-.student-button > p {
-    padding: 0;
-    margin-inline: 20px;
+a {
+  text-decoration: none;
 }
 
-.drop-class {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
-    width: 4rem;
-    aspect-ratio: 1 / 1;
-    text-align: center;
-    font-size: 1.5rem;
-    border-radius: 10%;
-
-    transition: color, background-color 100ms;
+a::after {
+  text-decoration: none;
 }
 
-.drop-class:hover {
-    background-color: red;
-    cursor: pointer;
-}
-
-.profile {
-    background-color: white;
-    width: 40%;
-    padding: 2%;
-}
-
-.profile .icon {
-    width: 30%;
-    aspect-ratio: 1 / 1;
-    background-color: red;
-    border-radius: 10%;
-}
-
-.profile .info {
-    color: black;
-    width: 50%;
-}
-
-.profile .info > * {
-    width: 100%;
-    padding: 3px;
-    margin: 2px;
-}
-
-.profile .info > textarea {
-    display: flex;
-    font-size: 1.2rem;
-    border: 1px solid rgba(128, 128, 128, 0.356);
-    border-radius: 10px;
-}
-
-.profile .bio {
-    margin: 2%;
-    width: 90%;
-    align-self: center;
-    color: black;
-}
-
-.profile .bio > * {
-    margin: 1%;
-}
-
-.profile .bio > textarea {
-    width: 100%;
-    border-radius: 5px;
-    aspect-ratio: 5 / 1;
-    font-size: 1.3rem;
-}
-
-.profile a {
-    color: black;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-
-    transition: color, background-color 100ms;
-}
-
-.profile a:nth-of-type(1):hover {
-    background-color: green;
-    color: white;
-}
-
-.profile a:nth-of-type(2):hover {
-    background-color: red;
-    color: white;
-}
-
-.student-view {
-    background-color: white;
-    width: 40%;
-    padding: 2%;
-}
-
-.student-view .icon {
-    width: 10rem;
-    max-height: 10rem;
-    background-color: red;
-    border-radius: 10%;
-}
-
-.student-view .info {
-    color: black;
-    width: 45%;
-}
-
-.student-view .info > * {
-    width: 100%;
-    padding: 3px;
-    margin: 2px;
-}
-
-.student-view .info > textarea {
-    display: flex;
-    border: 1px solid rgba(128, 128, 128, 0.356);
-    border-radius: 10px;
-}
-
-.student-view .bio {
-    margin: 2%;
-    width: 90%;
-    align-self: center;
-    color: black;
-}
-
-.student-view .bio > * {
-    margin: 1%;
-}
-
-.student-view .bio > textarea {
-    width: 100%;
-    border-radius: 5px;
-    aspect-ratio: 7 / 1;
-    font-size: 1.1rem;
-}
-
-.student-view p {
-    align-self: center;
-    color: black;
-    margin: 0;
-    padding: 0;
-    font-size: 1.3rem;
-}
-
-.student-view a {
-    color: black;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-
-    transition: color, background-color 100ms;
-    width: 30%;
-    align-self: center;
-    text-align: center;
-}
-
-.student-view a:hover {
-    background-color: red;
-    color: white;
-}
-
-.assignments-admin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 20px;
-}
-
-.listing {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%
-}
-
-.listing > div {
-    background-color: black;
-    width: 80%;
-    font-size: 2rem;
-    padding: 10px;
-    font-style: italic;
-    margin: 10px;
-}
-
-.listing > a {
-    font-size: 1.5rem;
-    padding: 2%;
-    margin: 2%;
-    border-radius: 7%;
-    background-color: white;
-    color: black;
-    border: 1px solid gray;
-
-    transition: color, background-color 100ms;
-}
-
-.listing > a:hover {
-    background-color: green;
-    color: white;
-}
-
-.assignment-posting {
-    background-color: white;
-    width: 40%;
-    padding: 2%;
-}
-
-.assignment-posting h1 {
-    color: black;
-}
-
-.assignment-posting form {
-    color: black;
-}
-
-.assignment-posting form > label {
-    font-size: 1.2rem;  
-    padding: 10px;
-}
-
-.assignment-posting form > textarea {
-    width: 100%;
-    aspect-ratio: 8 / 1;
-}
-
-.assignment-posting form > input {
-    width: 25%;
-}
-
-.assignment-posting a {
-    color: black;
-    border: 1px solid black;
-    border-radius: 10rem;
-    padding: 10px;
-    padding-inline: 40px;
-    margin-top: 5%;
-
-    transition: color, background-color 100ms;
-}
-
-.assignment-posting a:nth-of-type(1):hover {
-    background-color: red;
-    color: white;
-}
-
-.assignment-posting a:nth-of-type(2):hover {
-    background-color: green;
-    color: white;
-}
-
-
-/* Helper classes */
 .d-flex {
-    display: flex;
+  display: flex;
 }
 
 .d-flex-col {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
 }
 
 .justify-center {
-    justify-content: center;
-}
-
-.justify-around {
-    justify-content: space-around;
-}
-
-.justify-between {
-    justify-content: space-between;
+  justify-content: center;
 }
 
 .justify-evenly {
-    justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 .align-center {
-    align-items: center;
+  align-items: center;
 }
 
-/* https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
-.noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+::-webkit-scrollbar {
+  width: 7px;
 }
 
-@keyframes gradient {
-    from, to {
-        background-position: 0%;
-        color: black;
-    }
-    50% {
-        background-position: 100%;
-        color: white;
-    }
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: lightgray; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white; 
 }

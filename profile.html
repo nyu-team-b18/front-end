@@ -1,47 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <h1 class="title">HELLO, ADVENTURE</h1>
-    <nav class="top-bar">
-        <ul>
-            <!-- TODO: This home button should redirect differently depending on type of account -->
-            <li><a href="/homeStudent.html">Home</a></li>
-            <li><a href="#">Learn</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-    </nav>
-    <!-- TODO: Make buttons submit form -->
-    <!-- TODO: Add confirmation for delete account -->
-    <div class="d-flex justify-center">
-        <div class="profile d-flex-col">
-          <div class="d-flex justify-evenly">
-            <div class="icon"></div>
-            <form class="info">
-              <label for="username">Username</label><br>
-              <textarea id="name" name="name" style="resize: none" readonly>UserName1171</textarea>
-              <label for="name">Your Name</label><br>
-              <textarea id="name" name="name" style="resize: none">Johnathan Dope</textarea>
-              <label for="email">Your Email</label><br>
-              <textarea id="email" name="email" style="resize: none">johnnydoe11@gmail.com</textarea>
+<html>
+<head>
+<title>Hello, Adventure</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">\
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+    <div class="w3-row w3-black w3-container w3-center w3-padding-16 w3-large">
+        <a href="#" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
+        <a href="#about" class="w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
+    </div>
+</div>
+
+<!-- Header with image -->
+<header style="min-height: 30%; margin-top: 2%;" class="d-flex align-center bgimg w3-display-container w3-grayscale-min" id="home">
+    <div class="w3-display-middle w3-center d-flex align-center">
+      <span class="w3-text-white" style="font-size:90px">YOUR PROFILE</span>
+    </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+    <div class="w3-container d-flex justify-center">
+        <div class="w3-twothird d-flex justify-evenly align-center w3-padding-32"> 
+            <div class="w3-deep-purple icon"></div>
+            <form class="profile-info">
+                <label for="username">Username</label><br>
+                <textarea id="name" name="name" style="resize: none" readonly>UserName1171</textarea>
+                <label for="name">Your Name</label><br>
+                <textarea id="name" name="name" style="resize: none">Johnathan Dope</textarea>
+                <label for="email">Your Email</label><br>
+                <textarea id="email" name="email" style="resize: none">johnnydoe11@gmail.com</textarea>
             </form>
-          </div>
-          <form class="bio">
+        </div>
+
+    </div>
+    <div class="w3-container d-flex justify-center">
+        <form class="profile-bio">
             <label for="bio">Your Bio</label><br>
             <textarea id="bio" name="bio" style="resize: none" maxlength="200">Hey, this is my super cool bio!</textarea>
-          </form>
-          <div class="d-flex justify-evenly">
-            <a href="#">Update Account</a>
-            <a href="#">Delete Account</a>
-          </div>
-        </div>
+        </form>
     </div>
-  </body>
+    <div class="profile-buttons d-flex justify-center w3-padding-32">
+        <a href="#">Update Account</a>
+        <a href="#">Delete Account</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-16 w3-large">
+    <p>Hello, Adventure</p>
+    <p>2023</p>
+</footer>
+</body>
 </html>

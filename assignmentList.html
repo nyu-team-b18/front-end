@@ -1,43 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <h1 class="title">HELLO, ADVENTURE</h1>
-    <nav class="top-bar">
-        <ul>
-            <li><a class="active" href="#">Home</a></li>
-            <li><a href="#">Learn</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-    </nav>
-    <div class="d-flex-col align-center">
-      <div class="class-information">
-        <h1>All Assignments:</h1>
-        <div class="assignments-admin d-flex-col align-center">
-            <div class="listing">
-                <div>ASSIGNMENT - 1</div>
-                <a href="/updateAssignment.html">Update</a>
-            </div>
-            <div class="listing">
-                <div>ASSIGNMENT - 2</div>
-                <a href="#">Update</a>
-            </div>
-            <div class="listing">
-                <div>ASSIGNMENT - 3</div>
-                <a href="#">Update</a>
-            </div>
-        </div>
-        <a href="/createAssignment.html">
-          <div class="assignment-update">Create New Assignment</div>
-        </a>
-      </div>
+<html>
+<head>
+<title>Hello, Adventure</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+    <div class="w3-row w3-black w3-container w3-center w3-padding-16 w3-large">
+        <a href="#" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
+        <a href="#about" class="w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
     </div>
-  </body>
+</div>
+
+<!-- Header with image -->
+<header style="min-height: 30%; margin-top: 2%;" class="d-flex align-center bgimg w3-display-container w3-grayscale-min" id="home">
+    <div class="w3-display-middle w3-center d-flex align-center">
+      <span class="w3-text-white" style="font-size:90px">CLASS X</span>
+    </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<div class="w3-container d-flex-col align-center">
+    <h1 class="w3-black w3-padding d-flex justify-center" style="min-width: 20%;">Assignments</h1>
+    <div class="w3-twothird d-flex-col justify-center align-center">
+        <div class="assignment-update d-flex justify-center align-center">
+            <div class="w3-xxlarge w3-padding d-flex align-center">
+                Assignment 1
+            </div>
+            <a class="w3-xlarge" href="./updateAssignment.html">Update</a>
+        </div>
+        <div class="assignment-update d-flex justify-center align-center">
+            <div class="w3-xxlarge w3-padding d-flex align-center">
+                Assignment 2
+            </div>
+            <a class="w3-xlarge" href="./updateAssignment.html">Update</a>
+        </div>
+        <div class="assignment-update d-flex justify-center align-center">
+            <div class="w3-xxlarge w3-padding d-flex align-center">
+                Assignment 3
+            </div>
+            <a class="w3-xlarge" href="./updateAssignment.html">Update</a>
+        </div>
+    </div>
+    <div class="d-flex justify-evenly">
+        <a class="assignment-button w3-margin w3-padding" href="./classlist.html">Back</a> 
+        <a class="assignment-button w3-margin w3-padding" href="./createAssignment.html">Create New Assignment</a> 
+    </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-16 w3-large">
+    <p>Hello, Adventure</p>
+    <p>2023</p>
+</footer>
+</body>
 </html>
