@@ -28,28 +28,28 @@
 <!-- Add a background color and large text to the whole page -->
 <div class="w3-sand w3-grayscale w3-large">
     <div class="w3-container d-flex justify-center">
-        <div class="w3-twothird d-flex justify-evenly align-center w3-padding-32"> 
-            <div class="w3-deep-purple icon"></div>
-            <form class="profile-info">
-                <label for="username">Username</label><br>
-                <textarea id="name" name="name" style="resize: none" readonly>UserName1171</textarea>
-                <label for="name">Your Name</label><br>
-                <textarea id="name" name="name" style="resize: none">Johnathan Dope</textarea>
-                <label for="email">Your Email</label><br>
-                <textarea id="email" name="email" style="resize: none">johnnydoe11@gmail.com</textarea>
-            </form>
-        </div>
-
-    </div>
-    <div class="w3-container d-flex justify-center">
-        <form class="profile-bio">
-            <label for="bio">Your Bio</label><br>
-            <textarea id="bio" name="bio" style="resize: none" maxlength="200">Hey, this is my super cool bio!</textarea>
+        <form style="min-width: 100%;" class="d-flex-col align-center w3-full">
+            <div class="w3-twothird d-flex justify-evenly align-content w3-padding-32">
+                <div class="w3-deep-purple icon"></div>
+                <div class="profile-info">
+                    <label for="username">Username</label><br>
+                    <textarea id="name" name="name" style="resize: none" readonly>UserName1171</textarea>
+                    <label for="name">Your Name</label><br>
+                    <textarea id="name" name="name" style="resize: none">Johnathan Dope</textarea>
+                    <label for="email">Your Email</label><br>
+                    <textarea id="email" name="email" style="resize: none">johnnydoe11@gmail.com</textarea>
+                </div>
+            </div>
+            <div class="profile-bio">
+                <label for="bio">Your Bio</label><br>
+                <textarea id="bio" name="bio" style="resize: none" maxlength="200">Hey, this is my super cool bio!</textarea>
+            </div>
+            <div class="profile-buttons d-flex justify-center w3-padding-32">
+                <input type="submit" value="Update Account">
+                <input type="submit" value="Delete Account">
+            </div>
         </form>
-    </div>
-    <div class="profile-buttons d-flex justify-center w3-padding-32">
-        <a href="#">Update Account</a>
-        <a href="#">Delete Account</a>
+
     </div>
 </div>
 

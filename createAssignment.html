@@ -29,20 +29,21 @@
 <div class="w3-sand w3-grayscale w3-large">
 
 <div class="w3-container d-flex justify-center" id="menu">
-    <div class="w3-content w3-half">
-        <form class="assignment-create d-flex-col justify-center">
+    <form class="w3-content w3-half">
+        <div class="assignment-create d-flex-col justify-center separate-children">
             <label for="title" class="w3-xxlarge w3-black w3-padding">Assignment Title</label>
             <textarea id="title" name="title" style="resize: none"></textarea>
             <label for="desc" class="w3-xxlarge w3-black w3-padding">Assignment Description</label>
             <textarea id="desc" name="desc" style="resize: none" maxlength="500"></textarea>
             <label for="date" class="w3-xxlarge w3-black w3-padding">Due Date</label>
             <input type="date">
-        </form>
+        </div>
         <div class="assignment-create-buttons d-flex justify-evenly w3-margin">
             <a class="w3-margin w3-padding-16" href="/assignmentList.html">Cancel</a>
-            <a class="w3-margin w3-padding-16" href="/assignmentList.html">Create</a>
+            <input class="w3-margin w3-padding-16" type="submit" value="Create">
+
         </div>
-    </div>
+    </form>
     
 </div>
 

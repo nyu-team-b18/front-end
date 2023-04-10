@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello, Adventure</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="./style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="./registrationOptions.js" defer></script>
+</head>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+    <div class="w3-row w3-black w3-container w3-center w3-padding-16 w3-large">
+        <a href="#" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
+        <a href="#about" class="w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
+    </div>
+</div>
+
+<!-- Header with image -->
+<header style="min-height: 30%" class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-center d-flex align-center">
+    <span class="w3-text-white" style="font-size:90px">REGISTER</span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+    <h1 class="w3-center w3-padding"><span class="w3-padding w3-tag w3-wide">ACCOUNT TYPE</span></h1>
+    <div class="d-flex justify-evenly">
+        <a data-account-type="admin" style="width: 13%; aspect-ratio: 1 / 1;" class="reg-option w3-center card w3-black w3-hover-blue w3-margin">ADMIN</a>
+        <a data-account-type="student" style="width: 13%; aspect-ratio: 1 / 1;" class="reg-option w3-center card selected w3-hover-blue w3-margin" >STUDENT</a>
+        <a data-account-type="guest" style="width: 13%; aspect-ratio: 1 / 1;" class="reg-option w3-center card w3-black w3-hover-blue w3-margin">GUEST</a>
+    </div>
+    <div class="w3-container d-flex justify-center w3-padding-64 w3-margin">
+        <div class="account-area w3-quarter" id="admin-option" hidden>
+            <form class="reg-details d-flex-col align-center">
+                <div style="width: 100%">
+                    <input type="hidden" id="accountType" value="admin">
+                    <label for="email">EMAIL</label><br>
+                    <input style="width:100%" type="text" id="email" name="email"><br>
+                    <label for="username">USERNAME</label><br>
+                    <input style="width:100%" type="text" id="username" name="username"><br>
+                    <label for="password">PASSWORD</label><br>
+                    <input style="min-width:100%" type="password" id="password" name="password"><br>
+                    <label for="password-confirm">CONFIRM PASSWORD</label><br>
+                    <input style="min-width:100%" type="password" id="password-confirm" name="password-confirm"><br>
+                </div>
+                <input style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge"type="submit">
+            </form>
+        </div>
+        <div class="account-area w3-quarter" id="student-option">
+            <form class="reg-details d-flex-col align-center">
+                <div style="width: 100%">
+                    <input type="hidden" id="accountType" value="student">
+                    <label for="email">EMAIL</label><br>
+                    <input style="width:100%" type="text" id="email" name="email"><br>
+                    <label for="username">USERNAME</label><br>
+                    <input style="width:100%" type="text" id="username" name="username"><br>
+                    <label for="password">PASSWORD</label><br>
+                    <input style="min-width:100%" type="password" id="password" name="password"><br>
+                    <label for="password-confirm">CONFIRM PASSWORD</label><br>
+                    <input style="min-width:100%" type="password" id="password-confirm" name="password-confirm"><br>
+                    <label for="class-code">CLASS CODE</label><br>
+                    <input style="min-width:100%" type="text" id="class-code" name="class-code"><br>
+                </div>
+                <input style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge"type="submit">
+            </form>
+        </div>
+        <div class="account-area w3-quarter" id="guest-option" hidden>
+            <form class="reg-details d-flex-col align-center">
+                <div style="width: 100%">
+                    <input type="hidden" id="accountType" value="admin">
+                    <label for="email">EMAIL</label><br>
+                    <input style="width:100%" type="text" id="email" name="email"><br>
+                    <label for="username">USERNAME</label><br>
+                    <input style="width:100%" type="text" id="username" name="username"><br>
+                    <label for="password">PASSWORD</label><br>
+                    <input style="min-width:100%" type="password" id="password" name="password"><br>
+                    <label for="password-confirm">CONFIRM PASSWORD</label><br>
+                    <input style="min-width:100%" type="password" id="password-confirm" name="password-confirm"><br>
+                </div>
+                <input style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge"type="submit">
+            </form>
+        </div>
+    </div>
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-16 w3-large">
+    <p>Hello, Adventure</p>
+    <p>2023</p>
+</footer>
+</body>
+</html>
+
+<script>
+    $(document).ready(() => {
+        $(".reg-option").on('click', function() {
+            $(".account-area").hide();
+            $(".reg-option").removeClass("selected").addClass("w3-black")
+            $("#" + $(this).data("accountType") + "-option").show();
+            $(this).removeClass("w3-black").addClass("selected")
+        })    
+    })
+</script>
