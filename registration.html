@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="./registrationOptions.js" defer></script>
 </head>
 <body>
 
@@ -21,15 +20,15 @@
 </div>
 
 <!-- Header with image -->
-<header style="min-height: 30%" class="bgimg w3-display-container w3-grayscale-min" id="home">
+<header style="min-height: 35%; margin:0;" class="bgimg w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-middle w3-center d-flex align-center">
-    <span class="w3-text-white" style="font-size:90px">REGISTER</span>
+    <span class="w3-text-white d-flex align-center" style="font-size:90px">REGISTER</span>
   </div>
 </header>
-
 <!-- Add a background color and large text to the whole page -->
-<div class="w3-sand w3-grayscale w3-large">
+<div style="margin:0" class="w3-sand w3-grayscale w3-large">
     <h1 class="w3-center w3-padding"><span class="w3-padding w3-tag w3-wide">ACCOUNT TYPE</span></h1>
+    <p id="status" class="w3-padding w3-red w3-center" hidden>Account already exists</p>
     <div class="d-flex justify-evenly">
         <a data-account-type="admin" style="width: 13%; aspect-ratio: 1 / 1;" class="reg-option w3-center card w3-black w3-hover-blue w3-margin">ADMIN</a>
         <a data-account-type="student" style="width: 13%; aspect-ratio: 1 / 1;" class="reg-option w3-center card selected w3-hover-blue w3-margin" >STUDENT</a>
@@ -37,53 +36,53 @@
     </div>
     <div class="w3-container d-flex justify-center w3-padding-64 w3-margin">
         <div class="account-area w3-quarter" id="admin-option" hidden>
-            <form class="reg-details d-flex-col align-center">
+            <form class="reg-details d-flex-col align-center" onsubmit="return false">
                 <div style="width: 100%">
-                    <input type="hidden" id="accountType" value="admin">
+                    <input type="hidden" name="accountType" value="admin">
                     <label for="email">EMAIL</label><br>
-                    <input style="width:100%" type="text" id="email" name="email"><br>
+                    <input style="width:100%" type="text" name="email" required><br>
                     <label for="username">USERNAME</label><br>
-                    <input style="width:100%" type="text" id="username" name="username"><br>
+                    <input style="width:100%" type="text" name="username" required><br>
                     <label for="password">PASSWORD</label><br>
-                    <input style="min-width:100%" type="password" id="password" name="password"><br>
+                    <input style="min-width:100%" type="password" name="password" required><br>
                     <label for="password-confirm">CONFIRM PASSWORD</label><br>
-                    <input style="min-width:100%" type="password" id="password-confirm" name="password-confirm"><br>
+                    <input style="min-width:100%" type="password" name="password-confirm" required><br>
                 </div>
-                <input style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge"type="submit">
+                <button style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge" type="submit">SUBMIT</button>
             </form>
         </div>
         <div class="account-area w3-quarter" id="student-option">
-            <form class="reg-details d-flex-col align-center">
+            <form class="reg-details d-flex-col align-center" onsubmit="return false">
                 <div style="width: 100%">
-                    <input type="hidden" id="accountType" value="student">
+                    <input type="hidden" name="accountType" value="student">
                     <label for="email">EMAIL</label><br>
-                    <input style="width:100%" type="text" id="email" name="email"><br>
+                    <input style="width:100%" type="text" name="email" required><br>
                     <label for="username">USERNAME</label><br>
-                    <input style="width:100%" type="text" id="username" name="username"><br>
+                    <input style="width:100%" type="text" name="username" required><br>
                     <label for="password">PASSWORD</label><br>
-                    <input style="min-width:100%" type="password" id="password" name="password"><br>
+                    <input style="min-width:100%" type="password" name="password" required><br>
                     <label for="password-confirm">CONFIRM PASSWORD</label><br>
-                    <input style="min-width:100%" type="password" id="password-confirm" name="password-confirm"><br>
+                    <input style="min-width:100%" type="password" name="password-confirm" required><br>
                     <label for="class-code">CLASS CODE</label><br>
-                    <input style="min-width:100%" type="text" id="class-code" name="class-code"><br>
+                    <input style="min-width:100%" type="text" name="class-code" required><br>
                 </div>
-                <input style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge"type="submit">
+                <button style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge" type="submit">SUBMIT</button>
             </form>
         </div>
         <div class="account-area w3-quarter" id="guest-option" hidden>
-            <form class="reg-details d-flex-col align-center">
+            <form class="reg-details d-flex-col align-center" onsubmit="return false">
                 <div style="width: 100%">
-                    <input type="hidden" id="accountType" value="admin">
+                    <input type="hidden" name="accountType" value="admin">
                     <label for="email">EMAIL</label><br>
-                    <input style="width:100%" type="text" id="email" name="email"><br>
+                    <input style="width:100%" type="text" name="email" required><br>
                     <label for="username">USERNAME</label><br>
-                    <input style="width:100%" type="text" id="username" name="username"><br>
+                    <input style="width:100%" type="text" name="username" required><br>
                     <label for="password">PASSWORD</label><br>
-                    <input style="min-width:100%" type="password" id="password" name="password"><br>
+                    <input style="min-width:100%" type="password" name="password" required><br>
                     <label for="password-confirm">CONFIRM PASSWORD</label><br>
-                    <input style="min-width:100%" type="password" id="password-confirm" name="password-confirm"><br>
+                    <input style="min-width:100%" type="password" name="password-confirm" required><br>
                 </div>
-                <input style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge"type="submit">
+                <button style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge" type="submit">SUBMIT</button>
             </form>
         </div>
     </div>
@@ -100,11 +99,62 @@
 
 <script>
     $(document).ready(() => {
+
+        var url = window.location.href
+        if(url.indexOf("?error=true") != -1)
+            $("#status").show()
+
+
         $(".reg-option").on('click', function() {
             $(".account-area").hide();
             $(".reg-option").removeClass("selected").addClass("w3-black")
             $("#" + $(this).data("accountType") + "-option").show();
             $(this).removeClass("w3-black").addClass("selected")
-        })    
+        })
+        
+        $(".reg-details").on('submit', async function() {
+            // Get all the forms elements and their values in one step
+            let type = $(this).find('input[name="accountType"]').val()
+            let $email = $(this).find('input[name="email"]')
+            let $username = $(this).find('input[name="username"]')
+            let $password = $(this).find('input[name="password"]')
+            let $confirm = $(this).find('input[name="password-confirm"]')
+            
+            var inputValues = {
+                "account-type":type,
+                "email":$email.val(),
+                "username":$username.val(),
+                "password":$password.val(),
+                "password-confirm":$confirm.val()
+            } 
+
+            $email.val("")
+            $username.val("")
+            $password.val("")
+            $confirm.val("")
+
+            if(type === "student") {
+                let $code = $(this).find('input[name="class-code"]')
+                inputValues["class-code"] = $code.val()
+                $code.val("")
+            }
+
+            await fetch('http://127.0.0.1:5000/verifyRegistration', {
+                    method: "POST",
+                    headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(inputValues)
+            })
+            .then(response => {
+                console.log(response.status)
+                if(response.status === 409) {
+                    window.location = 'http://127.0.0.1:5500/registration.html?error=true'
+                } else {
+                    window.location = 'http://127.0.0.1:5500'
+                }
+            })
+        })
     })
 </script>
