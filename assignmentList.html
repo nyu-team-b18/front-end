@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
 
@@ -30,8 +31,8 @@
 
 <div class="w3-container d-flex-col align-center">
     <h1 class="w3-black w3-padding d-flex justify-center" style="min-width: 20%;">Assignments</h1>
-    <div class="w3-twothird d-flex-col justify-center align-center">
-        <div class="assignment-update d-flex justify-center align-center">
+    <div id="assignments" class="w3-twothird d-flex-col justify-center align-center">
+        <!-- <div class="assignment-update d-flex justify-center align-center">
             <div class="w3-xxlarge w3-padding d-flex align-center">
                 Assignment 1
             </div>
@@ -48,7 +49,7 @@
                 Assignment 3
             </div>
             <a class="w3-xlarge" href="./updateAssignment.html">Update</a>
-        </div>
+        </div> -->
     </div>
     <div class="d-flex justify-evenly">
         <a class="assignment-button w3-margin w3-padding" href="./classlist.html">Back</a> 
@@ -66,3 +67,23 @@
 </footer>
 </body>
 </html>
+
+<script>
+    $(document).ready(() => {
+        fetch('http://127.0.0.1:5000/getAssignments')
+        .then(response => response.json())
+        .then(data => {
+            $assignments = $("#assignments")
+            data['assignments'].forEach(element => {
+                $assignments.append(
+                    `<div class="assignment-update d-flex justify-center align-center">
+                        <div class="w3-xxlarge w3-padding d-flex align-center">
+                            ${element}
+                        </div>
+                        <a class="w3-xlarge" href="./updateAssignment.html">Update</a>
+                    </div>`
+                )
+            })        
+        })
+    })
+  </script>

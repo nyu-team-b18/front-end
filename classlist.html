@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
 
@@ -31,7 +32,7 @@
 <div class="w3-container d-flex-col align-center">
     <h1 class="w3-black w3-padding d-flex justify-center" style="min-width: 20%;">Assignments</h1>
     <div class="assignments-list w3-twothird d-flex-col justify-center align-center">
-        <div class="w3-xxlarge w3-padding d-flex align-center">
+        <!-- <div class="w3-xxlarge w3-padding d-flex align-center">
             Assignment 1
         </div>
         <div class="w3-xxlarge w3-padding d-flex align-center">
@@ -39,19 +40,19 @@
         </div>
         <div class="w3-xxlarge w3-padding d-flex align-center">
             Assignment 3
-        </div>
+        </div> -->
     </div>
     <a class="assignment-button w3-margin w3-padding" href="./assignmentList.html">Update Assignments</a> 
     <h1 class="w3-black w3-padding d-flex justify-center" style="min-width: 20%;">Classlist</h1>
     <div class="d-flex wrap justify-evenly classlist">
-        <a href="./infoStudent.html">Student 1</a>
+        <!-- <a href="./infoStudent.html">Student 1</a>
         <a href="./infoStudent.html">Student 2</a>
         <a href="./infoStudent.html">Student 3</a>
         <a href="./infoStudent.html">Student 4</a>
         <a href="./infoStudent.html">Student 5</a>
         <a href="./infoStudent.html">Student 6</a>
         <a href="./infoStudent.html">Student 7</a>
-        <a href="./infoStudent.html">Student 8</a>
+        <a href="./infoStudent.html">Student 8</a> -->
     </div>
 </div>
 
@@ -65,3 +66,31 @@
 </footer>
 </body>
 </html>
+
+<script>
+  $(document).ready(() => {
+    fetch('http://127.0.0.1:5000/getAssignments')
+    .then(response => response.json())
+    .then(data => {
+        $assignments = $(".assignments-list")
+        data['assignments'].forEach(element => {
+            $assignments.append(
+                `<div class="w3-xxlarge w3-padding d-flex align-center">
+                ${element}
+                </div>`
+            )
+        })        
+    })
+
+    fetch('http://127.0.0.1:5000/getStudents')
+    .then(response => response.json())
+    .then(data => {
+        $students = $(".classlist")
+        data['students'].forEach(element => {
+            $students.append(
+                `<a href="./infoStudent.html">${element}</a>`
+            )
+        })
+    })
+  })
+</script>

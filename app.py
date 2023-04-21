@@ -28,7 +28,6 @@ def verifyRegistration():
 @app.route('/verifyLogin', methods=["GET", "POST"])
 def verifyLogin():
     data = request.get_json()
-    account_type = data['account-type']
     
     # Check if the account exists
     # TODO: Add query & verification check
@@ -39,7 +38,28 @@ def verifyLogin():
     else:       # Failure
         # TODO: Compile relevant information into dictionary
         return jsonify({}), 409
+    
+@app.route('/getAssignments', methods=["GET"])
+def getAssignments():
+    # Get class assignments
+    # TODO: Add query for getting assignments
 
+    assignments = ['Assignment 1', 'Assignment 2', 'Assignment 3']
+
+    return jsonify({
+        'assignments': assignments,
+    })
+
+@app.route('/getStudents', methods=["GET"])
+def getStudents():
+    # Get class students
+    # TODO: Add query for getting students
+
+    students = [f'Student {i}' for i in range(1,11)]
+
+    return jsonify({
+        'students': students,
+    })
 
 app.secret_key = 'some other random key'
 

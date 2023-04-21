@@ -100,12 +100,19 @@
 <script>
     $(document).ready(() => {
 
+        // Check if an error occured
         var url = window.location.href
         if(url.indexOf("?error=true") != -1)
             $("#status").show()
-
+        
+        // Remove .html from url link
+        // TODO: Verify that we want this behavior
+        // var link = url.toString()
+        // link = link.split('.html')[0];
+        // window.history.replaceState( null, null, link );
 
         $(".reg-option").on('click', function() {
+            // Switch which option is selected
             $(".account-area").hide();
             $(".reg-option").removeClass("selected").addClass("w3-black")
             $("#" + $(this).data("accountType") + "-option").show();
@@ -120,7 +127,8 @@
             let $password = $(this).find('input[name="password"]')
             let $confirm = $(this).find('input[name="password-confirm"]')
             
-            var inputValues = {
+            // Store inputs in an object
+            var inputValues = { 
                 "account-type":type,
                 "email":$email.val(),
                 "username":$username.val(),
@@ -128,17 +136,20 @@
                 "password-confirm":$confirm.val()
             } 
 
+            // Reset input fields
             $email.val("")
             $username.val("")
             $password.val("")
             $confirm.val("")
 
+            // Check if we need to add the class code to the account type
             if(type === "student") {
                 let $code = $(this).find('input[name="class-code"]')
                 inputValues["class-code"] = $code.val()
                 $code.val("")
             }
 
+            // POST request to make new account
             await fetch('http://127.0.0.1:5000/verifyRegistration', {
                     method: "POST",
                     headers: {
@@ -148,7 +159,7 @@
                     body: JSON.stringify(inputValues)
             })
             .then(response => {
-                console.log(response.status)
+                // Check if POST was successful
                 if(response.status === 409) {
                     window.location = 'http://127.0.0.1:5500/registration.html?error=true'
                 } else {
