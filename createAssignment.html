@@ -57,3 +57,39 @@
 </footer>
 </body>
 </html>
+
+<script>
+    $(document).ready(async function() {
+        // Check if an error occurred
+        var url = window.location.href
+        console.log(url.indexOf("?error=true"))
+        if(url.indexOf("?error=true") != -1)
+            $("#status").show()
+        
+        $("#update-form").on("submit", async function() {
+            let $title = $("#assignment-title")
+            let $description = $(this).find('textarea[name="desc"]')
+            console.log($description.val())
+            let $date = $(this).find('input[name="date"]')
+            
+            // Store inputs in an object
+            var inputValues = {
+                "title": $title.text(),
+                "description": $description.text(),
+                "date": $date.val()
+            } 
+
+            await fetch('http://127.0.0.1:5000/createAssignment', {
+                    method: "POST",
+                    headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(inputValues)
+            })
+            .then(response => {
+                window.location = 'http://127.0.0.1:5500/assignmentList.html'
+            })
+        })
+    })
+</script>

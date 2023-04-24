@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
     
@@ -19,9 +20,9 @@
 </div>
 
 <!-- Header with image -->
-<header style="min-height: 30%; margin-top: 2%;" class="bgimg w3-display-container w3-grayscale-min" id="home">
+<header style="min-height: 40%; margin-top: 2%;" class="bgimg w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-middle w3-center">
-    <span class="w3-text-white" style="font-size:90px">UPDATE ASSIGNMENT</span>
+    <span id="assignment-title" class="w3-text-white" style="font-size:90px">ASSIGNMENT 1</span>
   </div>
 </header>
 
@@ -29,14 +30,12 @@
 <div class="w3-sand w3-grayscale w3-large">
 
 <div class="w3-container d-flex justify-center" id="menu">
-    <form class="w3-content w3-half">
+    <form id="update-form" class="w3-content w3-half" onsubmit="return false">
         <div class="assignment-create d-flex-col justify-center separate-children">
-            <label for="title" class="w3-xxlarge w3-black w3-padding">Assignment Title</label>
-            <textarea id="title" name="title" style="resize: none">Assignment 1</textarea>
             <label for="desc" class="w3-xxlarge w3-black w3-padding">Assignment Description</label>
-            <textarea id="desc" name="desc" style="resize: none" maxlength="500">FitnessGram multistage test as part aerobic a capacity student's the that progressively sound lap beep by signaled each can, they times many as back forth run until continues it the reaches gets test PACER max their score. Assessment in to used combined scores, and with whether muscular strength, Healthy the the software FitnessGram determine or Zone, body composition, the Needs Improvement endurance, a student is Zone Test for the.</textarea>
+            <textarea id="desc" name="desc" style="resize: none" maxlength="500"></textarea>
             <label for="date" class="w3-xxlarge w3-black w3-padding">Due Date</label>
-            <input type="date">
+            <input type="date" id="date" name="date" value="2012-12-02">
         </div>
         <div class="assignment-create-buttons d-flex justify-evenly w3-margin">
             <a class="w3-margin w3-padding-16" href="/assignmentList.html">Cancel</a>
@@ -55,3 +54,44 @@
 </footer>
 </body>
 </html>
+
+<script>
+    $(document).ready(async function() {
+        var url = window.location.href
+        var assignment = url.split("?")[1]
+        
+        await fetch("http://127.0.0.1:5000/getAssignmentDetails?"+assignment)
+            .then(response => response.json())
+            .then(data => {
+                $("#assignment-title").text(data['title'])
+                $("#desc").text(data['description'])
+                $("#date").val(data['date'])
+            })
+        
+        $("#update-form").on("submit", async function() {
+            let $title = $("#assignment-title")
+            let $description = $(this).find('textarea[name="desc"]')
+            console.log($description.val())
+            let $date = $(this).find('input[name="date"]')
+            
+            // Store inputs in an object
+            var inputValues = {
+                "title": $title.text(),
+                "description": $description.text(),
+                "date": $date.val()
+            } 
+
+            await fetch('http://127.0.0.1:5000/updateAssignment', {
+                    method: "POST",
+                    headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(inputValues)
+            })
+            .then(response => {
+                window.location = 'http://127.0.0.1:5500/assignmentList.html'
+            })
+        })
+    })
+</script>

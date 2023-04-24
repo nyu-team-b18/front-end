@@ -80,6 +80,21 @@
 
 <script>
   $(document).ready(() => {
+    fetch('http://127.0.0.1:5000/getAccountType')
+    .then(response => response.json())
+    .then(data => {
+      if(data['account-type'] === 'STUDENT') {
+        window.location = 'http://127.0.0.1:5500/homeStudent.html'
+      }
+      else if(data['account-type'] === 'ADMIN') {
+        window.location = 'http://127.0.0.1:5500/homeAdmin.html'
+      }
+      else if(data['account-type'] === 'GUEST') {
+        window.location = 'http://127.0.0.1:5500/homeGuest.html'
+      }
+    })
+
+
     // Check if an error occurred
     var url = window.location.href
     console.log(url.indexOf("?error=true"))

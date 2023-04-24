@@ -32,24 +32,6 @@
 <div class="w3-container d-flex-col align-center">
     <h1 class="w3-black w3-padding d-flex justify-center" style="min-width: 20%;">Assignments</h1>
     <div id="assignments" class="w3-twothird d-flex-col justify-center align-center">
-        <!-- <div class="assignment-update d-flex justify-center align-center">
-            <div class="w3-xxlarge w3-padding d-flex align-center">
-                Assignment 1
-            </div>
-            <a class="w3-xlarge" href="./updateAssignment.html">Update</a>
-        </div>
-        <div class="assignment-update d-flex justify-center align-center">
-            <div class="w3-xxlarge w3-padding d-flex align-center">
-                Assignment 2
-            </div>
-            <a class="w3-xlarge" href="./updateAssignment.html">Update</a>
-        </div>
-        <div class="assignment-update d-flex justify-center align-center">
-            <div class="w3-xxlarge w3-padding d-flex align-center">
-                Assignment 3
-            </div>
-            <a class="w3-xlarge" href="./updateAssignment.html">Update</a>
-        </div> -->
     </div>
     <div class="d-flex justify-evenly">
         <a class="assignment-button w3-margin w3-padding" href="./classlist.html">Back</a> 
@@ -69,8 +51,9 @@
 </html>
 
 <script>
-    $(document).ready(() => {
-        fetch('http://127.0.0.1:5000/getAssignments')
+    $(document).ready(async function() {
+
+        await fetch('http://127.0.0.1:5000/getAssignments')
         .then(response => response.json())
         .then(data => {
             $assignments = $("#assignments")
@@ -78,12 +61,18 @@
                 $assignments.append(
                     `<div class="assignment-update d-flex justify-center align-center">
                         <div class="w3-xxlarge w3-padding d-flex align-center">
-                            ${element}
+                            ${element} 
                         </div>
-                        <a class="w3-xlarge" href="./updateAssignment.html">Update</a>
+                        <button class="update-button w3-xlarge" data-assignment="${element}">Update</button>
                     </div>`
                 )
             })        
         })
+
+        $(".update-button").click(function() {
+            window.location = `http://127.0.0.1:5500/updateAssignment.html?assignment=${$(this).data("assignment")}`
+        })
+
+
     })
   </script>
