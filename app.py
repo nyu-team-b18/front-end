@@ -31,7 +31,7 @@ def verifyLogin():
     
     # Check if the account exists
     # TODO: Add query & verification check
-    check = True
+    check = False
     if check:   # Success
         # TODO: Compile relevant information into dictionary
         return jsonify({}), 200
@@ -113,6 +113,42 @@ def createAssignment():
     else:       # Failure
         # TODO: Compile relevant information into dictionary
         return jsonify({}), 409
+
+
+@app.route('/getProfile', methods=["GET", "POST"])
+def getProfile():
+    # TODO: Get the account type from the session
+    # TODO: Get the username from the session
+    account_type = 'ADMIN'
+    username = 'Username123'
+
+    if account_type == 'STUDENT':
+        # Get the account details
+        # TODO: Add a query to query profile information from students
+        name = "Student name 123"
+        email = "Student email 456"
+        bio = "Student bio 789"
+    elif account_type == 'ADMIN':
+        # Get the account details
+        # TODO: Add a query to query profile information from students
+        name = "Admin name 123"
+        email = "Admin email 456"
+        bio = "Admin bio 789"
+    else:
+        # Get the account details
+        # TODO: Add a query to query profile information from students
+        name = "Guest name 123"
+        email = "Guest email 456"
+        bio = "Guest bio 789"
+    
+    details = {
+        'username': username,
+        'name': name,
+        'email': email,
+        'bio': bio
+    }
+
+    return jsonify(details)
 
 
 app.secret_key = 'some other random key'

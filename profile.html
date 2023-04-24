@@ -5,8 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">\
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -33,7 +35,7 @@
                 <div class="w3-deep-purple icon"></div>
                 <div class="profile-info">
                     <label for="username">Username</label><br>
-                    <textarea id="name" name="name" style="resize: none" readonly>UserName1171</textarea>
+                    <textarea id="username" name="name" style="resize: none" readonly>UserName1171</textarea>
                     <label for="name">Your Name</label><br>
                     <textarea id="name" name="name" style="resize: none">Johnathan Dope</textarea>
                     <label for="email">Your Email</label><br>
@@ -60,3 +62,21 @@
 </footer>
 </body>
 </html>
+
+<script>
+    $(document).ready(async function() {
+        await fetch('http://127.0.0.1:5000/getProfile')
+        .then(response => response.json())
+        .then(data => {
+            let username = data['username']
+            let name = data['name']
+            let email = data['email']
+            let bio = data['bio']
+
+            $("#username").val(username)
+            $("#name").val(name)
+            $("#email").val(email)
+            $("#bio").val(bio)
+        })
+    })
+</script>

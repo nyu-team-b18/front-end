@@ -7,13 +7,15 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 </head>
 <body>
     
 <!-- Links (sit on top) -->
 <div class="w3-top">
     <div class="w3-row w3-black w3-container w3-center w3-padding-16 w3-large">
-        <a href="#" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
+        <a href="http://127.0.0.1:5500" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
         <a href="#about" class="w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
     </div>
 </div>
@@ -21,27 +23,27 @@
 <!-- Header with image -->
 <header style="min-height: 40%; margin-top: 2%;" class="bgimg w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-middle w3-center">
-    <span class="w3-text-white" style="font-size:90px">CREATE NEW<br>ASSIGNMENT</span>
+    <span class="w3-text-white" style="font-size:90px">CREATE ASSIGNMENT</span>
   </div>
 </header>
 
 <!-- Add a background color and large text to the whole page -->
 <div class="w3-sand w3-grayscale w3-large">
 
-<div class="w3-container d-flex justify-center" id="menu">
-    <form class="w3-content w3-half">
+<div class="w3-container d-flex-col justify-center align-center" id="menu">
+    <p id="status" class="w3-padding w3-red w3-center w3-tag w3-xlarge" hidden>Assignment Already Exists</p>
+    <form id="create-form" class="w3-content w3-half" onsubmit="return false">
         <div class="assignment-create d-flex-col justify-center separate-children">
             <label for="title" class="w3-xxlarge w3-black w3-padding">Assignment Title</label>
-            <textarea id="title" name="title" style="resize: none"></textarea>
+            <textarea id="title" name="title" style="resize: none" required></textarea>
             <label for="desc" class="w3-xxlarge w3-black w3-padding">Assignment Description</label>
-            <textarea id="desc" name="desc" style="resize: none" maxlength="500"></textarea>
+            <textarea id="desc" name="desc" style="resize: none" maxlength="500" required></textarea>
             <label for="date" class="w3-xxlarge w3-black w3-padding">Due Date</label>
-            <input type="date">
+            <input id="date" type="date" required>
         </div>
         <div class="assignment-create-buttons d-flex justify-evenly w3-margin">
             <a class="w3-margin w3-padding-16" href="/assignmentList.html">Cancel</a>
-            <input class="w3-margin w3-padding-16" type="submit" value="Create">
-
+            <button id="create-button" class="w3-margin w3-padding-16">Create</button>
         </div>
     </form>
     
@@ -60,22 +62,23 @@
 
 <script>
     $(document).ready(async function() {
-        // Check if an error occurred
-        var url = window.location.href
-        console.log(url.indexOf("?error=true"))
-        if(url.indexOf("?error=true") != -1)
-            $("#status").show()
+        window.scrollTo(0, 0)
         
-        $("#update-form").on("submit", async function() {
-            let $title = $("#assignment-title")
-            let $description = $(this).find('textarea[name="desc"]')
-            console.log($description.val())
-            let $date = $(this).find('input[name="date"]')
-            
+        $("#status").hide()
+        
+        $("#create-button").on("click", async function() {
+            let $title = $("#title")
+            let $description = $('#desc')
+            let $date = $('#date')
+
+            if(!$title.val()) return
+            if(!$description.val()) return
+            if(!$date.val()) return
+
             // Store inputs in an object
             var inputValues = {
-                "title": $title.text(),
-                "description": $description.text(),
+                "title": $title.val(),
+                "description": $description.val(),
                 "date": $date.val()
             } 
 
@@ -88,7 +91,13 @@
                     body: JSON.stringify(inputValues)
             })
             .then(response => {
-                window.location = 'http://127.0.0.1:5500/assignmentList.html'
+                if(response.status == 200) {
+                    window.location = 'http://127.0.0.1:5500/assignmentList.html'
+                }
+                else {
+                    $("#status").show()
+                    window.scroll(0, 0)
+                }
             })
         })
     })
