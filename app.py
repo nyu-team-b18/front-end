@@ -74,7 +74,7 @@ def getAccountType():
     # Get account type
     # TODO: Check session for account type
 
-    account_type = 'NONE'
+    account_type = 'STUDENT'
 
     return jsonify({'account-type':account_type})
 
@@ -88,10 +88,14 @@ def getAssignmentDetails():
     # TODO: Add a query for getting the assignment details
     assignment_description = "Just an assignment, nothing to see here"
     assignment_date = "2023-05-04"
+    assignment_world = 1
+    assignment_level = 2
     return jsonify({
         'title': assignment_title,
         'description': assignment_description,
-        'date': assignment_date
+        'date': assignment_date,
+        'world': assignment_world,
+        'level': assignment_level
     })
 
 @app.route('/updateAssignment', methods=["GET", "POST"])
@@ -99,6 +103,8 @@ def updateAssignment():
     if(request.method == 'POST'):
         data = request.get_json()
         title, description, date = data['title'], data['description'], data['date']
+        world, level = data['world'], data['level']
+
 
         # Update the assignment
         # TODO: Add query to update database at assignment title
@@ -110,6 +116,7 @@ def updateAssignment():
 def createAssignment():
     data = request.get_json()
     title, description, date = data['title'], data['description'], data['date']
+    world, level = data['world'], data['level']
 
     # Check if the assignment title already exists
     check = True
