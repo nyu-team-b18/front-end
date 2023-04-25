@@ -13,29 +13,55 @@
 
 <!-- Links (sit on top) -->
 <div class="w3-top">
-    <div class="w3-row w3-black w3-container w3-center w3-padding-16 w3-large">
-        <a href="#" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
-        <a href="#about" class="w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
+    <div id="bar-items" class="w3-row w3-black w3-container w3-center w3-padding-16 w3-large">
+        <a href="#top" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
+        <button id="logout" class="guest-content admin-content student-content w3-button w3-inline w3-black w3-padding w3-margin-left">LOGOUT</button>
+        <a href="#about" class="none-content w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
     </div>
 </div>
 
 <!-- Header with image -->
-<header class="bgimg w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+<header style="min-height: 50%" class="bgimg w3-display-container w3-grayscale-min" id="home" hidden>
+
+  <div class="admin-content w3-display-middle w3-center d-flex align-center">
+    <span class="w3-text-white" style="font-size:75px">WELCOME BACK,<br>ADMIN</span>
   </div>
-  <div class="w3-display-middle w3-center">
-    <span class="w3-text-white" style="font-size:90px">HELLO<br>ADVENTURE</span>
+
+  <div class="student-content w3-display-middle w3-center d-flex align-center">
+    <span class="w3-text-white" style="font-size:75px">WELCOME BACK,<br>STUDENT</span>
   </div>
-  <div class="w3-display-bottomright w3-center w3-padding-large">
+
+  <div class="guest-content w3-display-middle w3-center d-flex align-center">
+    <span class="w3-text-white" style="font-size:75px">WELCOME BACK<br>GUEST</span>
+  </div>
+
+  <div class="none-content w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:75px">HELLO, ADVENTURE</span>
   </div>
 </header>
 
 <!-- Add a background color and large text to the whole page -->
 <div class="w3-sand w3-grayscale w3-large">
 
-<!-- Menu Container -->
-<div class="w3-display-container w3-center" id="menu">
-    <div class="w3-content d-flex justify-center w3-padding" style="max-width:60%;">
+<div class="w3-display-container w3-center" id="content" hidden>
+
+    <div class="admin-content d-flex justify-evenly">
+      <a style="width: 15%; aspect-ratio: 1 / 1;" class="w3-center card w3-black w3-hover-blue w3-margin" href="classlist.html">YOUR<br>CLASS</a>
+      <a style="width: 15%; aspect-ratio: 1 / 1;" class="w3-center card w3-black w3-hover-blue w3-margin" href="profile.html">YOUR<br>PROFILE</a>
+    </div>
+
+    <div class="student-content d-flex justify-evenly">
+        <a style="width: 15%; aspect-ratio: 1 / 1;" class="w3-center card w3-black w3-hover-blue w3-margin" href="#">RESUME STORY</a>
+        <a style="width: 15%; aspect-ratio: 1 / 1;" class="w3-center card w3-black w3-hover-blue w3-margin" href="studentAssignments.html">YOUR<br>CLASS</a>
+        <a style="width: 15%; aspect-ratio: 1 / 1;" class="w3-center card w3-black w3-hover-blue w3-margin" href="profile.html">YOUR<br>PROFILE</a>
+    </div>
+
+    <div class="guest-content d-flex justify-evenly">
+        <a style="width: 15%; aspect-ratio: 1 / 1;" class="w3-center card w3-black w3-hover-blue w3-margin" href="classlist.html">YOUR<br>CLASS</a>
+        <a style="width: 15%; aspect-ratio: 1 / 1;" class="w3-center card w3-black w3-hover-blue w3-margin" href="profile.html">YOUR<br>PROFILE</a>
+    </div>
+
+    <div class="none-content w3-content d-flex justify-center w3-padding" style="max-width:60%;">
       <div class="d-flex-col justify-center align-center" style="width: 60%; padding: 0; margin: 0;">
         <h5 class="w3-center w3-padding-16 w3-xlarge"><span class="w3-tag w3-wide w3-padding">JOIN THE ADVENTURE</span></h5>
         <p id="status" class="w3-padding w3-red w3-center" hidden>USERNAME OR PASSWORD INCORRECT</p>
@@ -44,7 +70,7 @@
             <input style="min-width:45%" type="text" id="username" name="username" required><br>
             <label for="password">PASSWORD</label><br>
             <input style="min-width:45%" type="password" id="password" name="password" required><br>
-            <button style="min-width: 20%;" type="submit">SIGN IN</button>
+            <input style="min-width: 20%;" type="submit" value="SIGN IN">
             <a class="w3-white w3-border w3-hover-gray w3-hover-text-white w3-padding" href="./registration.html">Register</a>
         </form>
       </div>
@@ -52,7 +78,7 @@
 </div>
 
 <!-- About Container -->
-<div class="w3-container" id="about">
+<div class="w3-container" id="about" hidden>
   <div class="w3-content" style="max-width:50%">
     <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT HELLO ADVENTURE</span></h5>
     <p>The Cafe was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -79,25 +105,48 @@
 </html>
 
 <script>
-  $(document).ready(() => {
-    fetch('http://127.0.0.1:5000/getAccountType')
+  $(document).ready(async function() {
+
+    const LOCALHOST = 'http://127.0.0.1'
+    const CLIENT_PORT = ':5500'
+    const SERVER_PORT = ':5000'
+
+    await fetch(LOCALHOST + SERVER_PORT + '/getAccountType')
     .then(response => response.json())
     .then(data => {
+
+      $admin = $(".admin-content")
+      $student = $(".student-content")
+      $guest = $(".guest-content")
+      $none = $(".none-content")
+
+      $admin.hide()
+      $student.hide()
+      $guest.hide()
+      $none.hide()
+
       if(data['account-type'] === 'STUDENT') {
-        window.location = 'http://127.0.0.1:5500/homeStudent.html'
+        $student.show()
       }
       else if(data['account-type'] === 'ADMIN') {
-        window.location = 'http://127.0.0.1:5500/homeAdmin.html'
+        $admin.show()
       }
       else if(data['account-type'] === 'GUEST') {
-        window.location = 'http://127.0.0.1:5500/homeGuest.html'
+        $guest.show()
       }
+      else {
+        $about = $("#about")
+        $about.show()
+        $none.show()
+      }
+
+      $("#home").show()
+      $("#content").show()
     })
 
 
     // Check if an error occurred
     var url = window.location.href
-    console.log(url.indexOf("?error=true"))
     if(url.indexOf("?error=true") != -1)
         $("#status").show()
     
@@ -117,7 +166,7 @@
         $password.val("")
 
         // POST request to attempt login
-        await fetch('http://127.0.0.1:5000/verifyLogin', {
+        await fetch(LOCALHOST + SERVER_PORT + '/verifyLogin', {
                 method: "POST",
                 headers: {
                 'Accept': 'application/json',
@@ -128,11 +177,24 @@
         .then(response => {
             // Check if login was successful
             if(response.status === 409) {
-                window.location = 'http://127.0.0.1:5500/?error=true'
+                window.location = LOCALHOST + CLIENT_PORT + '/?error=true'
             } else {
-                window.location = 'http://127.0.0.1:5500'
+                window.location = LOCALHOST + CLIENT_PORT
             }
         })
     })
+
+    // Function for logging out of session
+    $("#logout").on("click", async function() {
+      // Sending request
+      await fetch(LOCALHOST + SERVER_PORT + "/logout", {
+        method: "POST"
+      })
+      .then(response => {
+        // Redirecting to home
+        window.location = LOCALHOST + CLIENT_PORT
+      })
+    })
+
   })
 </script>

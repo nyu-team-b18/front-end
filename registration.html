@@ -14,15 +14,15 @@
 <!-- Links (sit on top) -->
 <div class="w3-top">
     <div class="w3-row w3-black w3-container w3-center w3-padding-16 w3-large">
-        <a href="#" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
-        <a href="#about" class="w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
+        <a href="/" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
+        <a href="/#about" class="w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
     </div>
 </div>
 
 <!-- Header with image -->
-<header style="min-height: 35%; margin:0;" class="bgimg w3-display-container w3-grayscale-min" id="home">
+<header style="min-height: 40%; margin:0;" class="bgimg w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-middle w3-center d-flex align-center">
-    <span class="w3-text-white d-flex align-center" style="font-size:90px">REGISTER</span>
+    <span class="w3-text-white d-flex align-center" style="font-size:75px">REGISTER</span>
   </div>
 </header>
 <!-- Add a background color and large text to the whole page -->
@@ -30,9 +30,9 @@
     <h1 class="w3-center w3-padding"><span class="w3-padding w3-tag w3-wide">ACCOUNT TYPE</span></h1>
     <p id="status" class="w3-padding w3-red w3-center" hidden>Account already exists</p>
     <div class="d-flex justify-evenly">
-        <a data-account-type="admin" style="width: 13%; aspect-ratio: 1 / 1;" class="reg-option w3-center card w3-black w3-hover-blue w3-margin">ADMIN</a>
-        <a data-account-type="student" style="width: 13%; aspect-ratio: 1 / 1;" class="reg-option w3-center card selected w3-hover-blue w3-margin" >STUDENT</a>
-        <a data-account-type="guest" style="width: 13%; aspect-ratio: 1 / 1;" class="reg-option w3-center card w3-black w3-hover-blue w3-margin">GUEST</a>
+        <a data-account-type="admin" style="width: 15%; aspect-ratio: 1 / 1;" class="reg-option w3-center card w3-black w3-hover-blue w3-margin">ADMIN</a>
+        <a data-account-type="student" style="width: 15%; aspect-ratio: 1 / 1;" class="reg-option w3-center card selected w3-hover-blue w3-margin" >STUDENT</a>
+        <a data-account-type="guest" style="width: 15%; aspect-ratio: 1 / 1;" class="reg-option w3-center card w3-black w3-hover-blue w3-margin">GUEST</a>
     </div>
     <div class="w3-container d-flex justify-center w3-padding-64 w3-margin">
         <div class="account-area w3-quarter" id="admin-option" hidden>
@@ -165,6 +165,18 @@
                 } else {
                     window.location = 'http://127.0.0.1:5500'
                 }
+            })
+        })
+
+        // Function for logging out of session
+        $("#logout").on("click", async function() {
+            // Sending request
+            await fetch(LOCALHOST + SERVER_PORT + "/logout", {
+                method: "POST"
+            })
+            .then(response => {
+                // Redirecting to home
+                window.location = LOCALHOST + CLIENT_PORT
             })
         })
     })

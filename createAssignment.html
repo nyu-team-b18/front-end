@@ -15,15 +15,15 @@
 <!-- Links (sit on top) -->
 <div class="w3-top">
     <div class="w3-row w3-black w3-container w3-center w3-padding-16 w3-large">
-        <a href="http://127.0.0.1:5500" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
-        <a href="#about" class="w3-button w3-inline w3-black w3-padding w3-margin-left">ABOUT</a>
+        <a href="/" class="w3-button w3-inline w3-black w3-padding w3-margin-right">HOME</a>
+        <button id="logout" class="w3-button w3-inline w3-black w3-padding w3-margin-left">LOGOUT</button>        
     </div>
 </div>
 
 <!-- Header with image -->
 <header style="min-height: 40%; margin-top: 2%;" class="bgimg w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-middle w3-center">
-    <span class="w3-text-white" style="font-size:90px">CREATE ASSIGNMENT</span>
+    <span class="w3-text-white" style="font-size:75px">CREATE ASSIGNMENT</span>
   </div>
 </header>
 
@@ -98,6 +98,18 @@
                     $("#status").show()
                     window.scroll(0, 0)
                 }
+            })
+        })
+
+        // Function for logging out of session
+        $("#logout").on("click", async function() {
+            // Sending request
+            await fetch(LOCALHOST + SERVER_PORT + "/logout", {
+                method: "POST"
+            })
+            .then(response => {
+                // Redirecting to home
+                window.location = LOCALHOST + CLIENT_PORT
             })
         })
     })
