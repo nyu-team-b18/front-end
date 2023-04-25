@@ -14,10 +14,15 @@ def verifyRegistration():
     check = True
     if check:   # Success
         # TODO: Compile relevant information into dictionary
-        return jsonify({}), 200
+        return jsonify({
+            "result": "SUCCESS"
+        })
     else:       # Failure
-        # TODO: Compile relevant information into dictionary
-        return jsonify({}), 409
+        # TODO: Change the message to state why failure occurred        
+        return jsonify({
+            "result": "FAIL",
+            "message": "Admin not found"
+        })
 
 
 @app.route('/verifyLogin', methods=["GET", "POST"])
@@ -74,7 +79,7 @@ def getAccountType():
     # Get account type
     # TODO: Check session for account type
 
-    account_type = 'STUDENT'
+    account_type = 'NONE'
 
     return jsonify({'account-type':account_type})
 

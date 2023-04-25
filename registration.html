@@ -64,7 +64,7 @@
                     <input style="min-width:100%" type="password" name="password" required><br>
                     <label for="password-confirm">CONFIRM PASSWORD</label><br>
                     <input style="min-width:100%" type="password" name="password-confirm" required><br>
-                    <label for="class-code">CLASS CODE</label><br>
+                    <label for="admin-username">ADMIN USERNAME</label><br>
                     <input style="min-width:100%" type="text" name="class-code" required><br>
                 </div>
                 <button style="width: 30%; aspect-ratio: 2/1;" class="w3-xlarge" type="submit">SUBMIT</button>
@@ -103,8 +103,12 @@
 
         // Check if an error occured
         var url = window.location.href
-        if(url.indexOf("?error=true") != -1)
+        if(url.indexOf("?error=") != -1) {
+            let message = decodeURI(url.split("?error=")[1])
+            $("#status").text(message)
             $("#status").show()
+        }
+
 
         $(".reg-option").on('click', function() {
             // Switch which option is selected
@@ -139,9 +143,9 @@
 
             // Check if we need to add the class code to the account type
             if(type === "student") {
-                let $code = $(this).find('input[name="class-code"]')
-                inputValues["class-code"] = $code.val()
-                $code.val("")
+                let $admin = $(this).find('input[name="admin-username"]')
+                inputValues["admin-username"] = $admin.val()
+                $admin.val("")
             }
 
             // POST request to make new account
@@ -153,12 +157,15 @@
                 },
                 body: JSON.stringify(inputValues)
             })
-            .then(response => {
+            .then(response => response.json())
+            .then(data => {
                 // Check if POST was successful
-                if(response.status === 409) {
-                    window.location = LOCALHOST + CLIENT_PORT + '/registration.html?error=true'
-                } else {
-                    window.location = LOCALHOST
+                if(data['result'] === "FAIL") {
+                    let msg = data['message']
+                    window.location = LOCALHOST + CLIENT_PORT + '/registration.html?error=' + encodeURI(msg)
+                }
+                else {
+                    window.location = LOCALHOST + CLIENT_PORT
                 }
             })
         })
