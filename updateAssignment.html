@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="settings.js"></script>
 </head>
 <body>
     
@@ -67,12 +68,15 @@
 
 <script>
     $(document).ready(async function() {
+        // Get the assignment being queried
         var url = window.location.href
         var assignment = url.split("?")[1]
         
-        await fetch("http://127.0.0.1:5000/getAssignmentDetails?"+assignment)
+        // Get assignment details
+        await fetch(LOCALHOST + SERVER_PORT + `/getAssignmentDetails?${assignment}`)
             .then(response => response.json())
             .then(data => {
+                // Display the details
                 $("#assignment-title").text(data['title'])
                 $("#desc").text(data['description'])
                 $("#date").val(data['date'])
@@ -80,7 +84,9 @@
                 $("#level").val(data['level'])
             })
         
+        // Update event
         $("#update-form").on("submit", async function() {
+            // Get form information
             let $title = $("#assignment-title")
             let $description = $(this).find('textarea[name="desc"]')
             let $date = $(this).find('input[name="date"]')
@@ -96,7 +102,8 @@
                 "level": $level.val()
             } 
 
-            await fetch('http://127.0.0.1:5000/updateAssignment', {
+            // POST new information to server
+            await fetch(LOCALHOST + SERVER_PORT + '/updateAssignment', {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -105,7 +112,8 @@
                 body: JSON.stringify(inputValues)
             })
             .then(response => {
-                window.location = 'http://127.0.0.1:5500/assignmentList.html'
+                // Redirect
+                window.location = LOCALHOST + CLIENT_PORT + '/assignmentList.html'
             })
         })
     })

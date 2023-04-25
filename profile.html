@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="settings.js"></script>
 
 </head>
 <body>
@@ -65,13 +66,11 @@
 
 <script>
     $(document).ready(async function() {
-        const LOCALHOST = 'http://127.0.0.1'
-        const CLIENT_PORT = ':5500'
-        const SERVER_PORT = ':5000'
-
+        // Get profile information
         await fetch(LOCALHOST + SERVER_PORT +'/getProfile')
         .then(response => response.json())
         .then(data => {
+            // Display profile information
             let username = data['username']
             let name = data['name']
             let email = data['email']
@@ -83,17 +82,21 @@
             $("#bio").val(bio)
         })
 
+        // On update event
         $("#update").on("click", async function() {
+            // Get the new profile information
             let name = $("#name").val()
             let email = $("#email").val()
             let bio = $("#bio").val()
 
-            inputValues = {
+            // Storing the inputs
+            let inputValues = {
                 'name': name,
                 'email': email,
                 'bio': bio
             }
 
+            // POST changes to server
             await fetch(LOCALHOST + SERVER_PORT + '/updateProfile', {
                 method: "POST",
                 headers: {
@@ -103,15 +106,19 @@
                 body: JSON.stringify(inputValues)
             })
             .then(response => {
+                // Redirect to home page
                 window.location = 'http://127.0.0.1:5500/'
             })
         })
 
+        // On delete event
         $("#delete").on("click", async function() {
+            // Delete the account
             await fetch(LOCALHOST + SERVER_PORT + '/deleteAccount', {
                 method: "DELETE"
             }) 
             .then(response => {
+                // Redirect to home page
                 window.location = LOCALHOST + CLIENT_PORT
             })
         })

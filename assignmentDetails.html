@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="settings.js"></script>
 </head>
 <body>
     
@@ -66,12 +67,15 @@
 
 <script>
     $(document).ready(async function() {
+        // Get the assignment being queried for
         var url = window.location.href
         var assignment = url.split("?")[1]
         
-        await fetch("http://127.0.0.1:5000/getAssignmentDetails?"+assignment)
+        // Fetch the assignment details
+        await fetch(LOCALHOST + SERVER_PORT + `/getAssignmentDetails?${assignment}`)
             .then(response => response.json())
             .then(data => {
+                // Display the data
                 $("#assignment-title").text(data['title'])
                 $("#desc").text(data['description'])
                 $("#date").val(data['date'])

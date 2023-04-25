@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="settings.js"></script>
 
 </head>
 <body>
@@ -66,17 +67,15 @@
 
 <script>
     $(document).ready(async function() {
-        const LOCALHOST = 'http://127.0.0.1'
-        const CLIENT_PORT = ':5500'
-        const SERVER_PORT = ':5000'
-
+        // Get the username queried
         var url = window.location.href
         var username = url.split("?")[1]
-        console.log(username)
 
+        // Get the student information
         await fetch(LOCALHOST + SERVER_PORT +'/getStudentInformation?'+username)
         .then(response => response.json())
         .then(data => {
+            // Display the student information
             let username = data['username']
             let name = data['name']
             let email = data['email']
@@ -87,6 +86,7 @@
             $("#email").val(email)
             $("#bio").val(bio)
 
+            // Create a div for each assignment the student has completed
             data['assignments'].forEach(assignment => {
                 $('.assignments-list').append(
                     `<div class="w3-xxlarge w3-padding d-flex align-center">
@@ -96,9 +96,12 @@
             })
         })
 
+        // Drop event
         $(".drop-button").on("click", async function() {
+            // Get the student username
             let username = $("#username").val()
 
+            // Drop the student from the class
             await fetch(LOCALHOST + SERVER_PORT + '/dropStudent', {
                 method: "POST",
                 headers: {
@@ -108,6 +111,7 @@
                 body: JSON.stringify({'username': username})
             })
             .then(response => {
+                // Redirect
                 window.location = LOCALHOST + CLIENT_PORT + "/classlist.html"
             })
         })

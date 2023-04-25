@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="settings.js"></script>
 </head>
 <body>
 
@@ -104,12 +105,6 @@
         var url = window.location.href
         if(url.indexOf("?error=true") != -1)
             $("#status").show()
-        
-        // Remove .html from url link
-        // TODO: Verify that we want this behavior
-        // var link = url.toString()
-        // link = link.split('.html')[0];
-        // window.history.replaceState( null, null, link );
 
         $(".reg-option").on('click', function() {
             // Switch which option is selected
@@ -150,20 +145,20 @@
             }
 
             // POST request to make new account
-            await fetch('http://127.0.0.1:5000/verifyRegistration', {
-                    method: "POST",
-                    headers: {
+            await fetch(LOCALHOST + SERVER_PORT + '/verifyRegistration', {
+                method: "POST",
+                headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(inputValues)
+                },
+                body: JSON.stringify(inputValues)
             })
             .then(response => {
                 // Check if POST was successful
                 if(response.status === 409) {
-                    window.location = 'http://127.0.0.1:5500/registration.html?error=true'
+                    window.location = LOCALHOST + CLIENT_PORT + '/registration.html?error=true'
                 } else {
-                    window.location = 'http://127.0.0.1:5500'
+                    window.location = LOCALHOST
                 }
             })
         })

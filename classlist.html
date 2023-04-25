@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="settings.js"></script>
 </head>
 <body>
 
@@ -52,13 +53,11 @@
 
 <script>
   $(document).ready(async function() {
-    const LOCALHOST = 'http://127.0.0.1'
-    const CLIENT_PORT = ':5500'
-    const SERVER_PORT = ':5000'
-
+    // Get all the assignments created by this admin
     fetch(LOCALHOST + SERVER_PORT + '/getAssignments')
     .then(response => response.json())
     .then(data => {
+        // Create a new div for each assignment
         $assignments = $(".assignments-list")
         data['assignments'].forEach(element => {
             $assignments.append(
@@ -69,9 +68,11 @@
         })        
     })
 
+    // Get all the students under this admin
     await fetch(LOCALHOST + SERVER_PORT + '/getStudents')
     .then(response => response.json())
     .then(data => {
+        // Create a new button for each student
         $students = $(".classlist")
         data['students'].forEach(student => {
             $students.append(
@@ -80,7 +81,9 @@
         })
     })
 
+    // Handle student click events
     $(".student").on("click", async function() {
+        // Redirect to student information page
         let username = $(this).data("username")
         window.location = LOCALHOST + CLIENT_PORT + '/infoStudent.html?username=' + username
     })

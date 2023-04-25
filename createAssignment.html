@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
+<script src="settings.js"></script>
 </head>
 <body>
     
@@ -73,16 +73,18 @@
 <script>
     $(document).ready(async function() {
         window.scrollTo(0, 0)
-        
         $("#status").hide()
         
+        // Create event
         $("#create-button").on("click", async function() {
+            // Get form details
             let $title = $("#title")
             let $description = $('#desc')
             let $date = $('#date')
             let $world = $('#world')
             let $level = $('#level')
 
+            // Ensure that all details were acquired
             if(!$title.val()) return
             if(!$description.val()) return
             if(!$date.val()) return
@@ -98,19 +100,23 @@
                 "level": $level.val()
             } 
 
-            await fetch('http://127.0.0.1:5000/createAssignment', {
+            // POST new information to server
+            await fetch(LOCALHOST + SERVER_PORT + '/createAssignment', {
                     method: "POST",
                     headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(inputValues)
             })
             .then(response => {
+                // Check if successful
                 if(response.status == 200) {
-                    window.location = 'http://127.0.0.1:5500/assignmentList.html'
+                    // Redirect
+                    window.location = LOCALHOST + CLIENT_PORT + '/assignmentList.html'
                 }
                 else {
+                    // Show error
                     $("#status").show()
                     window.scroll(0, 0)
                 }
